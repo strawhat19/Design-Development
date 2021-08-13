@@ -1,0 +1,50 @@
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+}
+  
+body {
+    background: #021841;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sumitLogo {
+    width: 100%;
+}
+
+.sumitLogo path {
+  fill: default;
+  stroke: white;
+  stroke-width: 5px;
+  animation: textAnimate2 5s ease-in-out infinite alternate;
+}
+
+@keyframes textAnimate2 {
+    0% {
+      fill: transparent;
+      stroke-dasharray: 0 50%;
+          stroke-dashoffset: 20%;
+    }
+    35% {
+      stroke: white;
+      stroke-dasharray: 50% 0; 
+    }
+    75% {
+      stroke-dasharray: 0 50%;
+    }
+    100% {
+      fill: default;
+      stroke-dasharray: 0 50%;
+          stroke-dashoffset: -20%;
+    }
+  }
