@@ -10,6 +10,7 @@
     --blue: #0059ff;
     --orange: #F6961C;
     --yellow: #FEBE0E;
+    --teal: #0dbdb4;
     --gradient: linear-gradient(var(--orange),var(--yellow));
     --blackGlass: rgb(0 0 0 / 60%);
 }
@@ -60,6 +61,7 @@ body {
     align-items: center;
     width: 100vw;
     padding: 0 5em;
+    z-index: 1;
 }
 
 .barcolumn {
@@ -91,7 +93,7 @@ header {
     width: 100%;
     background: rgb(255 255 255 / 80%);
     backdrop-filter: blur(10px);
-    border-top: 1px solid var(--navy);
+    border-top: 1px solid #000000;
     color: #000;
     text-decoration: none;
     font-weight: 400;
@@ -117,7 +119,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 5em 0;
+    padding: 2em 0 5em;
 }
 
 svg:not(:root) {
@@ -126,6 +128,44 @@ svg:not(:root) {
 
 section {
     width: 100%;
+    position: relative;
+}
+
+.waveAnimation {
+    position: absolute;
+    top: -33px;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    z-index: -1;
+    animation: moveLeftRight 15s ease-in-out infinite alternate;
+    background: url(./images/wave1.svg);
+    overflow: visible;
+    background-repeat-y: no-repeat;
+    background-size: contain;
+}
+
+.waveAnimation2 {
+    position: absolute;
+    top: -33px;
+    left: 0;
+    width: 200%;
+    height: 72%;
+    z-index: -1;
+    animation: moveLeftRight 30s ease-in-out infinite alternate;
+    background: url(./images/wave2.svg);
+    overflow: visible;
+    background-repeat-y: no-repeat;
+    background-size: cover;
+}
+
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .observerBox {
@@ -150,6 +190,16 @@ section {
     transform-origin: left;
     animation: none;
   }
+
+  
+.vectorGraphicText text {
+    stroke: #fff;
+    fill: #fff;
+    font-weight: 700;
+    stroke-width: 0px;
+    transform-origin: left;
+    animation: textAnimate3 5s ease-in-out;
+}
 
 .pictureWaves {
     display: none;
