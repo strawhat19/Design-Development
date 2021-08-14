@@ -124,6 +124,15 @@ svg:not(:root) {
     overflow: visible;
 }
 
+section {
+    width: 100%;
+}
+
+.observerBox {
+    display: flex;
+    flex-direction: column;
+}
+
 .vectorGraphic text {
     font-size: 150px;
     stroke: #0ed1c1;
@@ -393,12 +402,14 @@ svg:not(:root) {
     left: 0;
 }
 
-.show text {
+.show {
+    display: flex;
     animation: fadeIn 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
-.hide text {
-    animation: none;
+.hide {
+    display: flex;
+    animation: fadeOut 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
 #openMenuToggler {
