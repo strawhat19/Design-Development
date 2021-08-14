@@ -16,8 +16,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
+svg:not(:root) {
+    overflow: visible;
+}
+
+.pictureWaves {
+    background: url(./images/LadyYellow.jpg);
+    overflow: hidden;
+    background-size: 55%;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.blackWaves path {
+    stroke: #021841;
+    stroke-width: 65px;
+    fill: #021841;
+    animation: rotate 5s linear infinite;
+    transform-origin: center;
+}
 .sumitLogo {
     width: 100%;
 }
@@ -26,14 +50,30 @@ body {
   fill: default;
   stroke: white;
   stroke-width: 5px;
-  animation: textAnimate2 5s ease-in-out infinite alternate;
+  animation: textAnimate 5s ease-in-out infinite alternate;
 }
 
-@keyframes textAnimate2 {
+#paint0_linear,#paint1_linear  {
+    transition: 150ms ease-in-out;
+}
+
+#paint3_linear {
+    animation: fadeIn 5s ease-in-out infinite alternate;
+    transition: 150ms ease-in-out;
+}
+
+.i,.dot {
+    fill: url(#paint3_linear);
+    /* position: relative;
+    transition: 300ms ease-in-out;
+    animation: fadeIn 5s ease-in-out infinite alternate !important; */
+}
+
+@keyframes textAnimate {
     0% {
       fill: transparent;
       stroke-dasharray: 0 50%;
-          stroke-dashoffset: 20%;
+        stroke-dashoffset: 20%;
     }
     35% {
       stroke: white;
@@ -47,4 +87,22 @@ body {
       stroke-dasharray: 0 50%;
           stroke-dashoffset: -20%;
     }
-  }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} */
