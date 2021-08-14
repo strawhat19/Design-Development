@@ -2,11 +2,6 @@
 console.log(`Portfolio`);
 console.log(`This is the Developer Console`);
 
-// The Global Object
-// console.log(this);
-var screenWidth = this.innerWidth;
-console.log(`The Inner Screen Width Is: ${screenWidth} pixels wide`);
-
 // Fading In Main Body
 // More Animation Variables Below
 const body = $(`body`);
@@ -60,16 +55,40 @@ observedItems.each((index,element) => {
 function inView(entries) {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            // $(entry.target).toggleClass(`inView`);
-            $(entry.target).attr(`style`,`animation: textAnimate3 5s ease-in-out;`);
+            $(entry.target).children().attr(`style,animation:none;`)
+            $(entry.target).fadeIn(5000);
             $(entry.target).children().html(`In User's View`);
+            $(entry.target).toggleClass(`inView`);
+            $(entry.target).removeClass(`notInView`);
+            $(entry.target).removeClass(`animationEnded`);
         } else {
-            // $(entry.target).removeClass(`inView`);
-            $(entry.target).attr(`style`,``);
-            $(entry.target).children().html(`Not In User's View`);
+            $(entry.target).toggleClass(`notInView`);
+            // $(entry.target).hide(1000);
+            // $(entry.target).show(1000);
+            // $(entry.target).attr(`style`,`display: block;`);
+            // setTimeout(function() {
+            //     // $(entry.target).addClass(`animationEnded`);
+            // },5000)
         }
     })
 }
+
+// var controller = new ScrollMagic.Controller();
+
+// var scene = new ScrollMagic.Scene({
+// triggerElement: '.notInView'
+// })
+
+// .setClassToggle('.notInView', 'animationended')
+// .addTo(controller);
+
+// $(`.notInView text`).on(`animationend`, function(event) {
+//     $(event.target).parent().removeClass(`notInView`);
+//     $(event.target).parent().removeClass(`inView`);
+//     setTimeout(function() {
+//         $(event.target).parent().addClass(`animationEnded`);
+//     },5000)
+// })
 
 // Fade In 1 Second Animation
 var fadeIn1s = $(`.fadeIn1s`);

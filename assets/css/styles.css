@@ -139,7 +139,7 @@ svg:not(:root) {
     font-weight: 700;
     stroke-width: 0px;
     transform-origin: left;
-    animation: textAnimate3 5s ease-in-out;
+    animation: none;
   }
 
 .pictureWaves {
@@ -295,9 +295,68 @@ svg:not(:root) {
     }
 }
 
+.observe {
+    transition: 1000ms ease-in-out;
+}
+
+.observe.notInView {
+    opacity: 0;
+}
+
+.notInView text {
+    transition: 1000ms ease-in-out;
+    opacity: 0;
+    /* animation: textAnimate3 3s ease-in-out reverse; */
+}
+
+.animationEnded text {
+    display: none;
+}
+
+.notInView {
+    transform: translateX(-300px);
+    opacity: 0 !important;
+    /* animation: slideLeft 3s ease-in-out reverse; */
+}
+
+.notInView:nth-child(even) {
+    transform: translateX(300px);
+    opacity: 0 !important;
+    /* animation: slideRight 3s ease-in-out reverse; */
+}
+
 .inView {
-    animation: fadeOut 500ms ease-in-out;
-    animation: fadeIn 500ms ease-in-out;
+    opacity: 1;
+    animation: fadeIn 1s ease-in-out;
+    animation: slideLeft 3s ease-in-out;
+}
+
+.inView:nth-child(even) {
+    opacity: 1;
+    animation: fadeIn 1s ease-in-out;
+    animation: slideRight 3s ease-in-out;
+}
+
+.inView text {
+    animation: textAnimate3 5s ease-in-out;
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(300px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(-300px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 @keyframes fadeIn {
@@ -307,6 +366,10 @@ svg:not(:root) {
     100% {
         opacity: 1;
     }
+}
+
+.fadeOut {
+    animation: fadeOut 3s ease-in-out;
 }
 
 @keyframes fadeOut {
@@ -330,14 +393,12 @@ svg:not(:root) {
     left: 0;
 }
 
-.show {
-    display: flex;
+.show text {
     animation: fadeIn 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
-.hide {
-    display: flex;
-    animation: fadeOut 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
+.hide text {
+    animation: none;
 }
 
 #openMenuToggler {
