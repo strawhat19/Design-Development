@@ -150,13 +150,27 @@ section {
     top: -33px;
     left: 0;
     width: 200%;
-    height: 72%;
     z-index: -1;
     animation: moveLeftRight 30s ease-in-out infinite alternate;
     background: url(./images/wave2.svg);
     overflow: visible;
     background-repeat-y: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    height: 100%;
+}
+
+.waveAnimation3 {
+    position: absolute;
+    top: -33px;
+    left: 0;
+    width: 200%;
+    z-index: -1;
+    animation: moveLeftRight 20s ease-in-out infinite alternate-reverse;
+    background: url(./images/wave3.svg);
+    overflow: visible;
+    background-repeat-y: no-repeat;
+    background-size: contain;
+    height: 100%;
 }
 
 @keyframes moveLeftRight {
