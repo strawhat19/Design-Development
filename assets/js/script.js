@@ -2,10 +2,74 @@
 console.log(`Portfolio`);
 console.log(`This is the Developer Console`);
 
+// The Global Object
+// console.log(this);
+var screenWidth = this.innerWidth;
+console.log(`The Inner Screen Width Is: ${screenWidth} pixels wide`);
+
 // Fading In Main Body
+// More Animation Variables Below
 const body = $(`body`);
 body.attr(`style`,`display: none`);
 body.fadeIn(2000);
+
+// Open and Close Mobile Menu
+// Also Track How Many Times The User Clicks The Menu Button
+// Get The Menu Click Count from Local Storage Which Can Be Found In Inspect > Application > Local Storage
+// If Menu has never been clicked or Local Storage has been cleared, Menu Click Count = 0
+// This Function Defines Actions to take place when the user clicks the Menu Button Toggle
+openMobileMenu = (menuClickCount = localStorage.getItem(`Menu Click Count`) || 0) => {
+    menuClickCount++; // This tells the Menu Click Count to Add 1 // Same as + 1
+	let menuToggler = $(`#openMenuToggler`);
+    let mobileMenu = $(`.mobileMenuLinks`);
+	menuToggler.toggleClass(`clicked`);
+    mobileMenu.toggleClass(`show`);
+  if (mobileMenu.hasClass(`show`) && menuToggler.hasClass(`clicked`)) { // Menu Is Open
+    // console.log(`Menu Is Open`);
+    mobileMenu.removeClass(`hide`);
+    mobileMenu.attr(`style`,``);
+  } else { // Menu Is Closed
+    //   console.log(`Menu Is Closed`);
+      mobileMenu.removeClass(`show`);
+      mobileMenu.toggleClass(`hide`);
+      mobileMenu.fadeOut();
+      mobileMenu.attr(`style`,``);
+  } // Storing the # of clicks on the menu button
+  console.log(`Menu has been clicked ${menuClickCount} times`);
+  localStorage.setItem(`Menu Click Count`, menuClickCount);
+}
+
+// Intersection Observer
+// An API That Lets Us Detect When Elements Are In ViewPort
+let options = {
+    root: null,
+    rootMargin: `-250px 0px`,
+    threshhold: 0.05
+};
+
+// Declaring New Observer To Use for Observing All Elements with Class of .observe
+var observedItems = $(`.observe`);
+console.log(`Total Elements Being Observed: ${observedItems.length}`);
+
+let observer = new IntersectionObserver(inView, options);
+observedItems.each((index,element) => {
+    observer.observe(element);
+})
+
+// If The Element Is In The View Port
+function inView(entries) {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // $(entry.target).toggleClass(`inView`);
+            $(entry.target).attr(`style`,`animation: textAnimate3 5s ease-in-out;`);
+            $(entry.target).children().html(`In User's View`);
+        } else {
+            // $(entry.target).removeClass(`inView`);
+            $(entry.target).attr(`style`,``);
+            $(entry.target).children().html(`Not In User's View`);
+        }
+    })
+}
 
 // Fade In 1 Second Animation
 var fadeIn1s = $(`.fadeIn1s`);
@@ -22,37 +86,39 @@ var fadeIn5s = $(`.fadeIn5s`);
 fadeIn5s.attr(`style`,`display: none`);
 fadeIn5s.fadeIn(5000);
 
-// // Fade In 1 Second Animation
-// var fadeIn1s = $(`.fadeIn1s`);
-// fadeIn1s.attr(`style`,`display: none`);
-// fadeIn1s.fadeIn(1000);
-
 // Grow In 3 Second Animation
 var growIn3s = $(`.growIn3s`);
 growIn3s.show(3000);
 
-// // Fade In 5 Second Animation
-// var fadeIn5s = $(`.fadeIn5s`);
-// fadeIn5s.attr(`style`,`display: none`);
-// fadeIn5s.fadeIn(5000);
+// Deprecated
 
+// Styled Console logs
 
+// const consolelog = console.log;
+// console.log = function (...args) {
+//     return consolelog.apply(this, [Math.random()].concat(args));
+// }
 
-// Open and Close Mobile Menu
-openMobileMenu = () => {
-	var menuToggler = $(`#openMenuToggler`);
-    var mobileMenu = $(`.mobileMenuLinks`);
-	menuToggler.toggleClass(`clicked`);
-    mobileMenu.toggleClass(`show`);
-  if (mobileMenu.hasClass(`show`) && menuToggler.hasClass(`clicked`)) {
-    console.log(`Menu Is Open`);
-    mobileMenu.removeClass(`hide`);
-    mobileMenu.attr(`style`,``);
-  } else {
-      console.log(`Menu Is Closed`);
-      mobileMenu.removeClass(`show`);
-      mobileMenu.toggleClass(`hide`);
-      mobileMenu.fadeOut();
-      mobileMenu.attr(`style`,``);
-  }
-}
+// Asyncronous Javascript
+// if (window.innerWidth > screenWidth || window.innerWidth < screenWidth) {
+//     console.log(screenWidth);
+// };
+
+// widthChange = (screenWidth) => {
+//     setInterval(() => {
+//         if (window.innerWidth > screenWidth || window.innerWidth < screenWidth) {
+//             console.log(screenWidth);
+//         };
+//     },1000)
+// }
+// widthChangeLog = (callback) => {
+//     setTimeout(() => {
+//         callback();
+//     },1000)
+// }
+
+// widthChangeLog(widthChange);
+
+// setInterval((clearLog) => {
+//     console.clear();
+// },1000)

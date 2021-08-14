@@ -13,6 +13,10 @@
     --gradient: linear-gradient(var(--orange),var(--yellow));
     --blackGlass: rgb(0 0 0 / 60%);
 }
+
+html {
+    overflow-x: hidden;
+}
   
 body {
     background: var(--navy);
@@ -21,6 +25,26 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'montserrat';
+}
+
+.interSectionCover {
+    position: fixed;
+    top: 250px;
+    right: 0;
+    bottom: 250px;
+    left: 0;
+    background: var(--blackGlass);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 5em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* Turn On Intersection Observer */
+    /* display: flex; */
+    /* Turn Off Intersection Observer */
+    display: none;
 }
 
 .bar {
@@ -99,6 +123,24 @@ main {
 svg:not(:root) {
     overflow: visible;
 }
+
+.vectorGraphic text {
+    font-size: 150px;
+    stroke: #0ed1c1;
+    fill: transparent;
+    font-weight: 700;
+    stroke-width: 5px;
+    animation: textAnimate2 5s ease-in-out infinite alternate;
+  }
+
+  .vectorGraphicOnce text {
+    stroke: #fff;
+    fill: #fff;
+    font-weight: 700;
+    stroke-width: 0px;
+    transform-origin: left;
+    animation: textAnimate3 5s ease-in-out;
+  }
 
 .pictureWaves {
     display: none;
@@ -183,6 +225,58 @@ svg:not(:root) {
     }
 }
 
+@keyframes textAnimate2 {
+    0% {
+      fill: transparent;
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: 30%;
+    }
+    35% {
+      fill: transparent;
+      stroke: #0ed1c1;
+      stroke-dasharray: 50% 0; 
+      stroke-dashoffset: 40%;
+    }
+    75% {
+      fill: #0ed1c1;
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: 50%;
+    }
+    100% {
+      fill: #0ed1c1;
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: -20%;
+    }
+}
+
+@keyframes textAnimate3 {
+    0% {
+      fill: transparent;
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: 30%;
+      stroke-width: 0;
+    }
+    35% {
+      fill: transparent;
+      stroke: #fff;
+      stroke-dasharray: 50% 0; 
+      stroke-dashoffset: -30%;
+      stroke-width: 1;
+    }
+    75% {
+      fill: #fff;
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: -10%;
+      stroke-width: 3;
+    }
+    100% {
+      fill: #fff;
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: 0%;
+      stroke-width: 5;
+    }
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -199,6 +293,11 @@ svg:not(:root) {
     100% {
         stroke-width: 100px;
     }
+}
+
+.inView {
+    animation: fadeOut 500ms ease-in-out;
+    animation: fadeIn 500ms ease-in-out;
 }
 
 @keyframes fadeIn {
