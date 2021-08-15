@@ -12,7 +12,7 @@ body.fadeIn(2000);
 // Also Track How Many Times The User Clicks The Menu Button
 openMobileMenu = (menuClickCount = localStorage.getItem(`Menu Click Count`) || 0) => {
     menuClickCount++; // This tells the Menu Click Count to Add 1 // Same as + 1
-	let menuToggler = $(`#openMenuToggler`);
+	let menuToggler = $(`.openMenuToggler`);
     let mobileMenu = $(`.mobileMenuLinks`);
 	menuToggler.toggleClass(`clicked`);
     mobileMenu.toggleClass(`show`);

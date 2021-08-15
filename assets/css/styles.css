@@ -1,3 +1,6 @@
+/* Importing Google Fonts Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 *, *::after, *::before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -332,25 +335,25 @@ section {
 
 @keyframes textAnimate2 {
     0% {
-      fill: transparent;
-      stroke-dasharray: 0 50%;
-      stroke-dashoffset: 30%;
+        fill: transparent;
+        stroke-dasharray: 0 50%;
+        stroke-dashoffset: 90px;
     }
     35% {
-      fill: transparent;
-      stroke: #0ed1c1;
-      stroke-dasharray: 50% 0; 
-      stroke-dashoffset: 40%;
+        fill: transparent;
+        stroke: #0ed1c1;
+        stroke-dasharray: 50% 0;
+        stroke-dashoffset: 40px;
     }
-    75% {
-      fill: #0ed1c1;
-      stroke-dasharray: 0 50%;
-      stroke-dashoffset: 50%;
+    65% {
+        fill: #0ed1c1;
+        stroke-dasharray: 0 25%;
+        stroke-dashoffset: 50px;
     }
     100% {
-      fill: #0ed1c1;
-      stroke-dasharray: 0 50%;
-      stroke-dashoffset: -20%;
+        fill: #0ed1c1;
+        stroke-dasharray: 0% 50%;
+        stroke-dashoffset: -20px;
     }
 }
 
@@ -401,7 +404,7 @@ section {
 }
 
 .observe {
-    transition: 1000ms ease-in-out;
+    transition: 1500ms ease-in-out;
 }
 
 .observe.notInView {
@@ -437,8 +440,8 @@ section {
 }
 
 .inView {
-    opacity: 1;
-    /* animation: fadeIn 1s ease-in-out; */
+    /* opacity: 0; */
+    animation: fadeIn 1s ease-in-out;
     transform: translateX(0px);
     transform-origin: center;
 }
@@ -594,8 +597,14 @@ section {
   }
 
 
+@media (min-width: 768px) {
+    .barcolumn {
+        min-width: 10em;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    .left.barcolumn {
+    .middle {
         display: none;
     }
     .bar {
