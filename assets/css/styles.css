@@ -58,6 +58,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    grid-gap: 6em;
     align-items: center;
     width: 100vw;
     padding: 0 5em;
@@ -70,7 +71,6 @@ body {
     justify-content: center;
     align-items: center;
     grid-gap: .2em;
-    min-width: 10em;
 }
 
 .barcolumn i {
@@ -159,7 +159,7 @@ section {
     animation: moveLeftRight 15s ease-in-out infinite alternate;
     background: url(./images/wave1.svg);
     overflow: visible;
-    background-repeat-y: no-repeat;
+    background-repeat: no-repeat;
     background-size: contain;
 }
 
@@ -172,7 +172,7 @@ section {
     animation: moveLeftRight 30s ease-in-out infinite alternate-reverse;
     background: url(./images/wave2.svg);
     overflow: visible;
-    background-repeat-y: no-repeat;
+    background-repeat: no-repeat;
     background-size: contain;
     height: 100%;
 }
@@ -186,7 +186,7 @@ section {
     animation: moveLeftRight 20s ease-in-out infinite alternate;
     background: url(./images/wave3.svg);
     overflow: visible;
-    background-repeat-y: no-repeat;
+    background-repeat: no-repeat;
     background-size: contain;
     height: 100%;
 }
