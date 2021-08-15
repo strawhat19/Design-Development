@@ -8,10 +8,12 @@
 :root {
     --navy: #021841;
     --blue: #0059ff;
+    --teal: #0dbdb4;
+    --varsity: #3A53A2;
     --orange: #F6961C;
     --yellow: #FEBE0E;
-    --teal: #0dbdb4;
     --gradient: linear-gradient(var(--orange),var(--yellow));
+    --tealGlass: rgb(11 185 177 / 60%);
     --blackGlass: rgb(0 0 0 / 60%);
 }
 
@@ -30,30 +32,28 @@ body {
 }
 
 .interSectionCover {
+    display: none;
     position: fixed;
     top: 250px;
     right: 0;
     bottom: 250px;
     left: 0;
-    background: var(--blackGlass);
-    backdrop-filter: blur(10px);
+    background: var(--tealGlass);
+    backdrop-filter: blur(5px);
     color: #fff;
     font-size: 5em;
     text-align: center;
     justify-content: center;
     align-items: center;
-    /* Turn On Intersection Observer */
-    /* display: flex; */
-    /* Turn Off Intersection Observer */
-    display: none;
+    z-index: 1;
 }
 
 .bar {
-    background: var(--blackGlass);
+    background: var(--navy);
     backdrop-filter: blur(10px);
     height: 3em;
     font-family: montserrat;
-    font-weight: 400;
+    font-weight: 500;
     color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -71,6 +71,10 @@ body {
     align-items: center;
     grid-gap: .2em;
     min-width: 10em;
+}
+
+.barcolumn i {
+    color: var(--teal);
 }
 
 header {
@@ -91,10 +95,10 @@ header {
 
 .mobileMenuLinks a {
     width: 100%;
-    background: rgb(255 255 255 / 80%);
+    background: rgb(10 157 157 / 90%);
     backdrop-filter: blur(10px);
-    border-top: 1px solid #000000;
-    color: #000;
+    border-top: 1px solid #ffffff;
+    color: #fff;
     text-decoration: none;
     font-weight: 400;
     padding: .5em 3.35em;
@@ -103,8 +107,17 @@ header {
     transition: 0.15s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
+.mobileMenuLinks a i {
+    color: #fff;
+}
+
 .mobileMenuLinks a:hover {
-    background: #fff;
+    background: var(--teal);
+    color: var(--navy);
+}
+
+.mobileMenuLinks a:hover i {
+    color: var(--navy);
 }
 
 footer {
@@ -131,6 +144,11 @@ section {
     position: relative;
 }
 
+::selection {
+    background: var(--blackGlass);
+    color: #fff;
+}
+
 .waveAnimation {
     position: absolute;
     top: -33px;
@@ -151,7 +169,7 @@ section {
     left: 0;
     width: 200%;
     z-index: -1;
-    animation: moveLeftRight 30s ease-in-out infinite alternate;
+    animation: moveLeftRight 30s ease-in-out infinite alternate-reverse;
     background: url(./images/wave2.svg);
     overflow: visible;
     background-repeat-y: no-repeat;
@@ -165,12 +183,26 @@ section {
     left: 0;
     width: 200%;
     z-index: -1;
-    animation: moveLeftRight 20s ease-in-out infinite alternate-reverse;
+    animation: moveLeftRight 20s ease-in-out infinite alternate;
     background: url(./images/wave3.svg);
     overflow: visible;
     background-repeat-y: no-repeat;
     background-size: contain;
     height: 100%;
+}
+
+.changeWord {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 0 0 10em 0;
+}
+
+.changeWordGraphic {
+    width: 50%;
 }
 
 @keyframes moveLeftRight {
@@ -386,28 +418,34 @@ section {
     display: none;
 }
 
-.notInView {
+.slide.notInView {
     transform: translateX(-300px);
+}
+
+.slide.notInView:nth-child(even) {
+    transform: translateX(300px);
+}
+
+.notInView {
     opacity: 0 !important;
     /* animation: slideLeft 3s ease-in-out reverse; */
 }
 
 .notInView:nth-child(even) {
-    transform: translateX(300px);
     opacity: 0 !important;
     /* animation: slideRight 3s ease-in-out reverse; */
 }
 
 .inView {
     opacity: 1;
-    animation: fadeIn 1s ease-in-out;
-    animation: slideLeft 3s ease-in-out;
+    /* animation: fadeIn 1s ease-in-out; */
+    transform: translateX(0px);
+    transform-origin: center;
 }
 
 .inView:nth-child(even) {
     opacity: 1;
-    animation: fadeIn 1s ease-in-out;
-    animation: slideRight 3s ease-in-out;
+    transform: translateX(0px);
 }
 
 .inView text {
@@ -511,7 +549,7 @@ section {
     margin-bottom: 4px;
     position: relative;
     top: .08em;
-    background: #fff;
+    background: var(--teal);
     border-radius: 0px;
     transform-origin: 4px 0px;
     transition: transform 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
@@ -547,7 +585,7 @@ section {
   }
   
   #openMenuToggler.clicked span:nth-last-child(2) {
-    transform: rotate(45deg) translate(-3px,    -4px);
+    transform: rotate(45deg) translate(-3px,-4px);
   }
   
   #openMenuToggler.clicked span:nth-last-child(3) {

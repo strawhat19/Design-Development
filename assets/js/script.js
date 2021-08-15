@@ -10,9 +10,6 @@ body.fadeIn(2000);
 
 // Open and Close Mobile Menu
 // Also Track How Many Times The User Clicks The Menu Button
-// Get The Menu Click Count from Local Storage Which Can Be Found In Inspect > Application > Local Storage
-// If Menu has never been clicked or Local Storage has been cleared, Menu Click Count = 0
-// This Function Defines Actions to take place when the user clicks the Menu Button Toggle
 openMobileMenu = (menuClickCount = localStorage.getItem(`Menu Click Count`) || 0) => {
     menuClickCount++; // This tells the Menu Click Count to Add 1 // Same as + 1
 	let menuToggler = $(`#openMenuToggler`);
@@ -57,38 +54,14 @@ function inView(entries) {
         if (entry.isIntersecting) {
             $(entry.target).children().attr(`style,animation:none;`)
             $(entry.target).fadeIn(5000);
-            $(entry.target).children().html(`In User's View`);
             $(entry.target).toggleClass(`inView`);
             $(entry.target).removeClass(`notInView`);
             $(entry.target).removeClass(`animationEnded`);
         } else {
             $(entry.target).toggleClass(`notInView`);
-            // $(entry.target).hide(1000);
-            // $(entry.target).show(1000);
-            // $(entry.target).attr(`style`,`display: block;`);
-            // setTimeout(function() {
-            //     // $(entry.target).addClass(`animationEnded`);
-            // },5000)
         }
     })
 }
-
-// var controller = new ScrollMagic.Controller();
-
-// var scene = new ScrollMagic.Scene({
-// triggerElement: '.notInView'
-// })
-
-// .setClassToggle('.notInView', 'animationended')
-// .addTo(controller);
-
-// $(`.notInView text`).on(`animationend`, function(event) {
-//     $(event.target).parent().removeClass(`notInView`);
-//     $(event.target).parent().removeClass(`inView`);
-//     setTimeout(function() {
-//         $(event.target).parent().addClass(`animationEnded`);
-//     },5000)
-// })
 
 // Fade In 1 Second Animation
 var fadeIn1s = $(`.fadeIn1s`);
@@ -113,6 +86,30 @@ growIn3s.show(3000);
 
 // Styled Console logs
 
+// var controller = new ScrollMagic.Controller();
+
+// var scene = new ScrollMagic.Scene({
+// triggerElement: '.notInView'
+// })
+
+// .setClassToggle('.notInView', 'animationended')
+// .addTo(controller);
+
+// $(`.notInView text`).on(`animationend`, function(event) {
+//     $(event.target).parent().removeClass(`notInView`);
+//     $(event.target).parent().removeClass(`inView`);
+//     setTimeout(function() {
+//         $(event.target).parent().addClass(`animationEnded`);
+//     },5000)
+// })
+
+// $(entry.target).hide(1000);
+// $(entry.target).show(1000);
+// $(entry.target).attr(`style`,`display: block;`);
+// setTimeout(function() {
+//     // $(entry.target).addClass(`animationEnded`);
+// },5000)
+
 // const consolelog = console.log;
 // console.log = function (...args) {
 //     return consolelog.apply(this, [Math.random()].concat(args));
@@ -135,6 +132,8 @@ growIn3s.show(3000);
 //         callback();
 //     },1000)
 // }
+
+// $(entry.target).children().html(`In User's View`);
 
 // widthChangeLog(widthChange);
 
